@@ -38,3 +38,41 @@ In ```package.json``` add under ```scripts```:
 Follow mern-shopping-list tutorial
 ----------------------------------
 From now on just follow the existing base project [mern-shopping-list](https://github.com/radusqrt/mern_shopping_list).
+
+Building frontend (with ReactJS)
+================================
+
+Install dependencies
+--------------------
+
+Create a new folder and a new ReactJS project.
+```
+mkdir client && cd client
+create-react-app .
+```
+
+Set up some starting scripts
+----------------------------
+This is going to create a new ```package.json``` which is totally different from the first one.
+In order not to write the whole link to ```http://localhost/``` every time we do a request,
+we are going to add a ```proxy``` field into package.json.
+```
+{
+  ...
+  "proxy": "http://localhost:5000"
+}
+```
+
+Add concurrent server & client scripts start in the backend ```package.json```.
+Also, add client-install script.
+```
+{
+  "scripts": {
+    ...
+    "client-install": "npm i --prefix client",
+    "client": "npm start --prefix client", // prefix is used for going to the client dir
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  }
+  ...
+}
+```
