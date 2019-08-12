@@ -76,3 +76,10 @@ Also, add client-install script.
   ...
 }
 ```
+
+Reactstrap and Bootstrap
+------------------------
+```
+cd client
+npm i bootstrap reactstrap react-transition-group
+```
