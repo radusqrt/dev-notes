@@ -116,3 +116,4 @@ Go to server folder (not client):
 heroku login
 heroku create
 ```
+Go to [Heroku website](http://heroku.com) on your newly created app and click on **Deploy**.
