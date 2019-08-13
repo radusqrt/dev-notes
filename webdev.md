@@ -97,3 +97,22 @@ If ```npm run dev``` has errors, apply:
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
+Prepare and deploy
+==================
+
+Add new script to your server ```package.json```:
+```
+{
+  ...
+  "scripts": {
+    ...
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm i --prefix client && npm run build --prefix client"
+  }
+}
+```
+
+Go to server folder (not client):
+```
+heroku login
+heroku create
+```
