@@ -83,3 +83,12 @@ Reactstrap and Bootstrap
 cd client
 npm i bootstrap reactstrap react-transition-group
 ```
+
+Running issues
+==============
+
+If ```npm run dev``` has errors, apply:
+```
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
