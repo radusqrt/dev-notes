@@ -51,6 +51,11 @@ mkdir client && cd client
 create-react-app .
 ```
 
+Install ```axios``` for future backend calls:
+```
+npm i axios
+```
+
 Set up some starting scripts
 ----------------------------
 This is going to create a new ```package.json``` which is totally different from the first one.
