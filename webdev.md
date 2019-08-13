@@ -13,9 +13,11 @@ This results into a ```package.json```.
 
 Install the backend framework ```express```, the database framework ```mongoose```
 and ```concurrently``` in order to run more than one npm script at a time (could be
-useful when combined with other front-end frameworks like ReactJS).
+useful when combined with other front-end frameworks like ReactJS). ```mongoose``` need ```--save```
+as well for future deploying on Heroku.
 ```
-npm i express mongoose concurrently
+npm i express concurrently
+npm i mongoose --save
 ```
 
 Install ```nodemon``` as a dev-dependency (not needed for production) which
@@ -117,3 +119,4 @@ heroku login
 heroku create
 ```
 Go to [Heroku website](http://heroku.com) on your newly created app and click on **Deploy**.
+After setting up git, ```git push heroku master``` and it should build and be available online.
