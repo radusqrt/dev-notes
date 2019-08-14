@@ -120,3 +120,10 @@ heroku create
 ```
 Go to [Heroku website](http://heroku.com) on your newly created app and click on **Deploy**.
 After setting up git, ```git push heroku master``` and it should build and be available online.
+
+JWT (JSON Web Tokens) Authentication
+====================================
+
+Used to protect routes into an API so you can add authentication to fetch a token
+and make requests with that token to access protected routes.
+
