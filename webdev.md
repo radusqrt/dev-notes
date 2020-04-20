@@ -86,6 +86,8 @@ let state = {
 - information is passed by _props_.
 - **setState** is _async_, you can't see the results immediately.
   - you can pass a _callback_ as a second parameter to **setState**.
+  - you can also pass a **function** instead of an object as the first parameter: `(prevState, prevProps) => ({stateParam: prevState.stateParam + 1})`.
+  - it forces an update.
 - arrow functions **bind** automatically to the place (context) where they are defined.
   - Rule of thumb: use arrow functions on any class methods you define and **aren't** part of React.
 
@@ -100,11 +102,21 @@ let state = {
 - attributes:
   - **className**
   - **onChange**
+- there are properties called style where we can add CSS:
+  - `<div style={{backgroundImage: imageUrl}}></div>`
 
 ### Lifecycle methods
 
-- **componentDidMount** - exactly when the component is mounted in the VirtualDOM (at the beginning).
+![React Lifecycle](figs/2-react-lifecycle.png)
+
+- **constructor**.
 - **render** - every time the _state_ changes.
+- **componentDidMount** - exactly when the component is mounted in the VirtualDOM (at the beginning).
+- **componentDidUpdate** - after _setState_ or _new props_ or _forceUpdate_.
+- **shouldComponentUpdate** - we decide if the component is rendered again based on _nextProps_ and _nextState_.
+  - for example, `return nextProps.attribute1 !== this.props.attribute1`: update the component only if attribute1 changes.
+  - good for **performace**!
+- **componentWillUnmount** - before a component is destroyed.
 
 ### Directory architecture
 
@@ -133,6 +145,80 @@ src
    2. `"deploy": "gh-pages -d build"`
 4. `yarn deploy`
 
+## Routing
+
+### Installation
+
+`yarn add react-router-dom`
+
+### Usage
+
+#### BrowserRouter
+
+In `index.js` import **BrowserRouter**.
+Wrap `<App />` around it.
+
+```
+import { BrowserRouter } from "react-router-dom";
+...
+<BrowserRouter>
+  <App />
+</BrowserRouter>
+```
+
+#### Switch
+
+Wrap `<Route>`s around **<Switch></Switch>** to make routing exclusive to your routes instead off concatenating them.
+
+This gives the app the routing functionality.
+
+#### Component router props
+
+In the _props_ object sent to a component there are always some attributes:
+
+- history
+- location
+  - gives us a full _pathname_ of where we are.
+- match
+  - in _props.match_ there is an attribute, **isExact**, which is a bool that tells you if the route is exact to the path expected or not.
+    - **Example**: `<Route path='/' component={A} />` will be exact for `localhost:5000/` but not exact for `localhost:5000/topics` even if it will still be rendered for the second one.
+  - in _props.match_ there is an attribute, **params**, which gives you the dynamically added params to the URL.
+    - **Example**: `<Route path='/:topicId' component={A} />` and going to `localhost:5000/13` will give you `params = {topicId: "13"}`.
+
+The _props_ object is given only to the first component that accesses it, not its the children from the VirtualDOM. In order to send them the information, we use **withRouter** to avoid _prop drilling_.
+
+# SASS
+
+It's OOP for CSS.
+Extension `.scss`.
+
+## Installation
+
+`yarn add node-sass`
+
+## Examples
+
+```
+.menu-item {
+   min-width: 30$;
+
+   &.weird {
+      height = 1000px;
+   }
+}
+```
+
+```javascript
+<div className="weird menu-item"></div>
+```
+
+will create a menu-item **which is also weird**.
+
+# Fonts
+
+Take them from [Google Fonts](https://fonts.google.com/).
+Get the embedding and add it to `index.html` at the end of `<head>`.
+
 # Glossary
 
 - **HTML** = Hypertext Markup Language
@@ -142,3 +228,4 @@ src
 - **CSS** = Cascading Style Sheet
 - **MVC** = Model View Controller
 - **JSX** = JavaScript XML
+- **SASS** = CSS with superpowers
