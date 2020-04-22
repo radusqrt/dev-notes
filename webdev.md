@@ -219,6 +219,47 @@ will create a menu-item **which is also weird**.
 Take them from [Google Fonts](https://fonts.google.com/).
 Get the embedding and add it to `index.html` at the end of `<head>`.
 
+# Redux
+
+## Principles
+
+- keep a unique state of the whole app called **store**
+- modify it through **actions** and **reducers**
+- use **selectors** for memoizing operations
+
+## redux-persist
+
+Helps with local or session persisting.
+Alternative for _localStorage/sessionStorage_.
+
+### Installation
+
+`yarn add redux-persist`
+
+# JS
+
+- falsy values (things that return **false**):
+  - 0
+  - false
+  - undefined
+  - null
+  - NaN
+  - ""
+- `==` is loose equal
+  - `"1" == 11`
+  - `"1" ! === 1`
+- **window**
+  - **localStorage**
+    - persists until we clear it out
+    - methods
+      - **getItem**
+        - `myRetrievedObject = window.localStorage.getItem('myItem')`
+        - `JSON.parse(myRetrievedObject)`
+      - **setItem**
+        - `window.localStorage.setItem('myItem', JSON.stringify(myObjectToStore))`
+  - **sessionStorage**
+    - persists as long as the tab is open
+
 # Glossary
 
 - **HTML** = Hypertext Markup Language
